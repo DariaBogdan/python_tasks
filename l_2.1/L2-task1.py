@@ -17,7 +17,7 @@ def intersect(*args):
     :param *args: 'sets' to intersect.​
     :type *args: any iterable​
     :returns: list -- elements of resulted set.
-    :raises: nothing
+    :raises: IndexError if nothing is given
     """
     res = set(args[0])
     for s in args[1:]:
