@@ -22,7 +22,7 @@ def intersect(*args) -> list:
     :raises: nothing
     """
     res = set(union(*args))
-    # we pass thow all the pairs of sets
+    # we pass throw all the pairs of sets
     for s in args:
         for t in list(args[1:]) + [args[0]]:
 
