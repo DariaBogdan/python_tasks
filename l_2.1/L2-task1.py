@@ -8,18 +8,26 @@ def union(*args) -> list:
     """
     res = set()
     for s in args:
-        res = res.union(s)
+        for item in s:
+            res.add(item)
     return list(res)
 
-def intersect(*args):
+
+def intersect(*args) -> list:
     """Allows to intersect any number of sets.
     ​
     :param *args: 'sets' to intersect.​
     :type *args: any iterable​
     :returns: list -- elements of resulted set.
-    :raises: IndexError if nothing is given
+    :raises: nothing
     """
-    res = set(args[0])
-    for s in args[1:]:
-        res = res.intersection(s)
+    res = set(union(*args))
+    # we pass thow all the pairs of sets
+    for s in args:
+        for t in list(args[1:]) + [args[0]]:
+
+            for item in s:
+                if item not in t:
+                    res.discard(item)
+
     return list(res)
