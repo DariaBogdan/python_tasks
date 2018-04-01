@@ -1,6 +1,5 @@
 def add(d: dict) -> None:
-    """
-    Adds new records to the phonebook.
+    """Adds new records to the phonebook.
 
     :param d: dict to add item in
     :type d: dict
@@ -12,8 +11,7 @@ def add(d: dict) -> None:
 
 
 def show(d: dict) -> None:
-    """
-    Shows all records from the phonebook by name, if exist.
+    """Shows all records from the phonebook by name, if exist.
 
     :param d: dict to show item from
     :type d: dict
@@ -30,8 +28,8 @@ def show(d: dict) -> None:
 
 
 def delete(d: dict) -> None:
-    """
-    Delete records from phonebook by name, if exist.
+    """Delete records from phonebook by name, if exist.
+
     :param d: dict to delete item from
     :type d: dict
     :return: None
