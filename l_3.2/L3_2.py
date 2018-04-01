@@ -2,14 +2,12 @@ import time
 import functools
 
 def decorator(func):
-    '''
-    Calculates and displays the program execution time.
+    """Calculates and displays the program execution time.
 
     :param func: time of execution of this function is calculated
     :type func: function
     :return: function
-    '''
-
+    """
     @functools.wraps(func)
     def inner(*args, **kwargs):
         t0 = time.time()
