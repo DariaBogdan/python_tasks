@@ -1,25 +1,25 @@
 def add(d: dict) -> None:
-    '''
+    """
     Adds new records to the phonebook.
 
     :param d: dict to add item in
     :type d: dict
     :return: None
     :raises: nothing
-    '''
+    """
     name = input('Input name to add> ').title()
     d[name] = d.get(name, []) + [input('Input the phone> ')]
 
 
 def show(d: dict) -> None:
-    '''
+    """
     Shows all records from the phonebook by name, if exist.
 
     :param d: dict to show item from
     :type d: dict
     :return: None
     :raises: nothing
-    '''
+    """
     name = input('Input name to show> ').title()
     if name in d:
         print('name     phone')
@@ -30,18 +30,19 @@ def show(d: dict) -> None:
 
 
 def delete(d: dict) -> None:
-    '''
+    """
     Delete records from phonebook by name, if exist.
     :param d: dict to delete item from
     :type d: dict
     :return: None
     :raises: nothing
-    '''
+    """
     name = input('Input name to delete> ').title()
     if name in d:
         del d[name]
     else:
         print(f'There is no records for {name}.')
+
 
 phone_dict = {}
 while True:
