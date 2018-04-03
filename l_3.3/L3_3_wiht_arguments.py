@@ -5,7 +5,7 @@ def with_arguments(deco):
     """Allows to set arguments to another decorator.
 
     :param deco: decorator to set arguments in.
-    :return: decorator with setted arguments.
+    :return: decorator with arguments set.
     """
     @functools.wraps(deco)
     def wrapper(*dargs,**dkwargs):
