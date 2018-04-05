@@ -82,7 +82,7 @@ def random_int(*args, **kwargs):
     :**kwargs: anything.
     """
     random_number = random.randint(1,10)
-    print(f"Foo called: {random_number}")
+    print(f"Random_int called: {random_number}")
     return random_number
 
 
