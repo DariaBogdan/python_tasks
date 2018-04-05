@@ -81,9 +81,9 @@ def random_int(*args, **kwargs):
     :*args: anything.
     :**kwargs: anything.
     """
-    a = random.randint(1,10)
-    print("Foo called!", a)
-    return a
+    random_number = random.randint(1,10)
+    print(f"Foo called: {random_number}")
+    return random_number
 
 
 if __name__ == '__main__':
