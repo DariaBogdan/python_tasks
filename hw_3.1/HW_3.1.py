@@ -6,7 +6,7 @@ import random
 def off():
     """Changes field 'disabled' in fabric decorator to True.
 
-    :return: None
+    :return: None.
     """
     fabric.disabled = True
 
@@ -14,7 +14,7 @@ def off():
 def on():
     """Changes field 'disabled' in fabric decorator to False.
 
-    :return: None
+    :return: None.
     """
     fabric.disabled = False
 
@@ -50,8 +50,8 @@ def repeat(times):
     The function should return number. If it does not, the
     error will raise.
 
-    :param times: times to call the function
-    :type times: int
+    :param times: times to call the function.
+    :type times: int.
     """
     def deco(func):
         def inner(*args, **kwargs):
@@ -67,8 +67,8 @@ def repeat(times):
 def foo(*args, **kwargs):
     """Function that works.
 
-    :*args: anything
-    :**kwargs: anything
+    :*args: anything.
+    :**kwargs: anything.
     """
     print("Foo called!")
     return 3
@@ -76,7 +76,11 @@ def foo(*args, **kwargs):
 
 @repeat(2)
 def random_int(*args, **kwargs):
-    """Returns random int from 1 to 10"""
+    """Returns random int from 1 to 10.
+
+    :*args: anything.
+    :**kwargs: anything.
+    """
     a = random.randint(1,10)
     print("Foo called!", a)
     return a
