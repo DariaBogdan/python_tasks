@@ -4,10 +4,6 @@ import abc
 
 class Vehicle(metaclass=abc.ABCMeta):
     """Abstract class for vehicles.
-
-    Class attributes:
-        number_of_cycles (int) : number of cycles.
-
     Instance attributes:
         name (str): the name of the vehicle.
         mileage (int): mileage in kilometres.
@@ -15,26 +11,11 @@ class Vehicle(metaclass=abc.ABCMeta):
         model (str): the model of the vehicle.
         base_price (int or float): base price.
 
-    Class methods:
+    Methods:
         vehicle_type.
         is_motorcycle.
-    Instance metods:
         purchase_price.
     """
-    @property
-    @classmethod
-    def number_of_cycles(cls):
-        """Checks that number of cycles is non negative int."""
-        return cls.__number_of_cycles
-
-    @number_of_cycles.setter
-    @classmethod
-    def number_of_cycles(cls, value):
-        assert isinstance(value, int) and value >= 0, 'Number of cycles should be int >= 0.'
-        cls.__number_of_cycles = value
-
-    number_of_cycles = 0
-
     @property
     def name(self):
         """Checks that it is a str."""
@@ -92,8 +73,10 @@ class Vehicle(metaclass=abc.ABCMeta):
         self.model = model
         self.base_price = base_price
 
+    @staticmethod
     @abc.abstractmethod
     def vehicle_type(self):
+        """Returns the type of the vehicle."""
         pass
 
     @classmethod
@@ -107,7 +90,15 @@ class Vehicle(metaclass=abc.ABCMeta):
 
 
 class Car(Vehicle):
-    number_of_cycles = 4
+    """Stands for the car.
+
+    Class attributes:
+        number_of_cycles (int) : number of cycles.
+    """
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if not hasattr(self.__class__, 'number_of_cycles'):
+            self.__class__.number_of_cycles = 4
 
     @staticmethod
     def vehicle_type():
@@ -115,7 +106,15 @@ class Car(Vehicle):
 
 
 class Motorcycle(Vehicle):
-    number_of_cycles = 3
+    """Stands for the motorcycle.
+
+    Class attributes:
+        number_of_cycles (int) : number of cycles.
+    """
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if not hasattr(self.__class__, 'number_of_cycles'):
+            self.__class__.number_of_cycles = 2
 
     @staticmethod
     def vehicle_type():
@@ -123,7 +122,15 @@ class Motorcycle(Vehicle):
 
 
 class Truck(Vehicle):
-    number_of_cycles = 10
+    """Stands for the truck.
+
+    Class attributes:
+        number_of_cycles (int) : number of cycles.
+    """
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if not hasattr(self.__class__, 'number_of_cycles'):
+            self.__class__.number_of_cycles = 10
 
     @staticmethod
     def vehicle_type():
@@ -131,7 +138,15 @@ class Truck(Vehicle):
 
 
 class Bus(Vehicle):
-    number_of_cycles = 6
+    """Stads for the bus.
+
+    Class attributes:
+        number_of_cycles (int) : number of cycles.
+    """
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if not hasattr(self.__class__, 'number_of_cycles'):
+            self.__class__.number_of_cycles = 6
 
     @staticmethod
     def vehicle_type():
