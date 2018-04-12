@@ -3,17 +3,37 @@
 
 class prop(object):
     """Emulate property."""
-    def __init__(self, fget):
+    def __init__(self, fget=None, fset=None, fdel=None, doc=None):
         self.fget = fget
+        self.fset = fset
+        self.fdel = fdel
+        if doc is None and fget is not None:
+            doc = fget.__doc__
+        self.__doc__ = doc
 
-    def __get__(self, obj, a):
-        return self.fget(obj)
+    def __get__(self, instance, a):
+        if self.fget is None:
+            raise AttributeError("can't get attribute")
+        return self.fget(instance)
+
+    def __set__(self, instance, value):
+        if self.fset is None:
+            raise AttributeError("can't set attribute")
+        return self.fset(instance, value)
+
+    def __delete__(self, instance):
+        if self.fdel is None:
+            raise AttributeError("can't delete attribute")
+        return self.fdel(instance)
 
     def setter(self, fset):
         self.fset = fset
 
-    def __set__(self, smth, value):
-        return self.fset(smth, value)
+    def getter(self, fget):
+        self.fget = fget
+
+    def deleter(self, fdel):
+        self.fdel = fdel
 
 
 class Something:
@@ -26,7 +46,7 @@ class Something:
         return self.x ** 2
 
     @attr.setter
-    def set_attr(self, update):
+    def attr_setter(self, update):
         self.x = update
 
 
