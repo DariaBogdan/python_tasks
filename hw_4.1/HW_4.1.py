@@ -1,7 +1,4 @@
 #!/usv/bin/env python3.6
-import operator
-
-
 def get_top_length():
     """Sets length of top to be shown."""
     return 3
