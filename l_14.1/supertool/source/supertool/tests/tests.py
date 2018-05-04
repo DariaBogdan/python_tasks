@@ -9,6 +9,9 @@ DIRECTORY = 'supertool_tmp'
 
 
 class TestSupertool(unittest.TestCase):
+    """Creating temporary folder in setUp, filling it with files,
+    working, then deleting temporary folder with tearDown.
+    """
     def setUp(self):
         if not os.path.exists(DIRECTORY):
             os.makedirs(DIRECTORY)
