@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+"""
+Similar files finder entrypoint
+"""
+import argparse
+import logging
+
+import supertool.similar
+
+ROOT_LOGGER = logging.getLogger()
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Find similar files')
+    parser.add_argument('directory', type=str, help='target directory')
+    parser.add_argument('--verbose', help='enable debug output', action='store_true')
+    args = parser.parse_args()
+
+    if args.verbose:
+        log_level = logging.DEBUG
+    else:
+        log_level = logging.ERROR
+
+    ROOT_LOGGER.setLevel(log_level)
+    ROOT_LOGGER.addHandler(logging.FileHandler('log.txt'))
+
+    ROOT_LOGGER.info('beginning search')
+    supertool.similar.work(args.directory)
+    ROOT_LOGGER.info('ended search')

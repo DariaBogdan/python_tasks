@@ -1,0 +1,7 @@
+venv
+source/build
+source/dist
+source/supertool_distro.egg-info
+source/bin/log.txt
+source/supertool/weather.py
+source/bin/weather_forecast
