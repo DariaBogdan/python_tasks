@@ -5,3 +5,5 @@ source/supertool_distro.egg-info
 source/bin/log.txt
 source/supertool/weather.py
 source/bin/weather_forecast
+source/supertool/__pycache__
+.idea
