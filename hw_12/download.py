@@ -26,7 +26,8 @@ def file_processing(arg):
         img.thumbnail(size)
         img.save(os.path.join(args.dir, str(row_num).zfill(filename_length)+'.jpeg'), "JPEG")
         print(f'done img #{row_num}')
-    except:
+    except Exception as e:
+        print(f'error img #{row_num}: {e}')
         with lock:
             errors += 1
 
