@@ -3,7 +3,7 @@ import os
 import unittest
 import unittest.mock
 
-import supertool
+import supertool.similar
 
 DIRECTORY = 'supertool_tmp'
 
@@ -39,7 +39,7 @@ class TestSupertool(unittest.TestCase):
 
     @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
     def test_assert_stdout(self, mock_stdout):
-        supertool.work(DIRECTORY)
+        supertool.similar.work(DIRECTORY)
 
         expected_output = "This 2 files are the same:\n['supertool_tmp/4', 'supertool_tmp/5']\n" \
                           "This 3 files are the same:\n['supertool_tmp/3', 'supertool_tmp/1', 'supertool_tmp/2']\n"
