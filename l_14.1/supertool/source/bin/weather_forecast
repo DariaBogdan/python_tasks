@@ -9,10 +9,18 @@ if __name__ == '__main__':
     address = input('input address> ')
     coordinates = supertool.weather.get_coordinates_by_address(address)
     # print current weather
-    supertool.weather.get_current_weather_by_coordinates(lat=coordinates['lat'],
-                                                         lon=coordinates['lon']
-                                                         )
+    supertool.weather.beautiful_print(
+        data=supertool.weather.get_current_weather_by_coordinates(
+            lat=coordinates['lat'],
+            lon=coordinates['lon']
+        ),
+        title='CURRENT WEATHER'
+    )
     # print future weather
-    supertool.weather.get_weather_forecast_by_coordinates(lat=coordinates['lat'],
-                                                          lon=coordinates['lon']
-                                                          )
+    supertool.weather.beautiful_print(
+        data=supertool.weather.get_weather_forecast_by_coordinates(
+            lat=coordinates['lat'],
+            lon=coordinates['lon']
+        ),
+        title='FORECAST WEATHER'
+    )

@@ -1,6 +1,5 @@
-import requests
 import pandas as pd
-
+import requests
 
 PRESSURE_CONST = 7.5006e-3
 APP_ID = 'b4a9d8e16b916107e741f1e84440c660'
@@ -37,6 +36,20 @@ def get_coordinates_by_address(address: str):
                 }
 
 
+def beautiful_print(data, title='', len_row=80, symbol='='):
+    """Prints heading row before printing data.
+
+    :param data: DataFrame to print
+    :param title: header
+    :param len_row: length of header row
+    :param symbol: symbol to fill the row
+    :return: None
+    """
+    print(title.center(len_row, symbol))
+    print(data)
+    print(symbol*len_row)
+
+
 def get_current_weather_by_coordinates(lat: float,
                                        lon: float,
                                        appid=APP_ID
@@ -57,13 +70,17 @@ def get_current_weather_by_coordinates(lat: float,
     }
 
     response = requests.get(url, headers=HEADERS, params=querystring)
-    print("CURRENT WEATHER".center(30, '='))
-    print(f"description: {response.json()['weather'][0]['description']}")
-    print(f"temperature: {response.json()['main']['temp']}°C")
-    print(f"pressure: {round(response.json()['main']['pressure'] * HPASCAL_TO_PASCAL * PRESSURE_CONST, 2)} mm Hg")
-    print(f"humidity: {response.json()['main']['humidity']}%")
-    print(f"wind speed: {response.json()['wind']['speed']} meter/sec")
-    print("="*30)
+    js = response.json()
+    df = pd.DataFrame(
+        {'description': [js['weather'][0]['description']],
+         'temp,°C': [js['main']['temp']],
+         'press,mm Hg': [round(js['main']['pressure'] * HPASCAL_TO_PASCAL * PRESSURE_CONST, 2)],
+         'hum,%': [js['main']['humidity']],
+         'wind,m/s': [js['wind']['speed']]
+         },
+        index=['']
+    )
+    return df
 
 
 def get_weather_forecast_by_coordinates(lat,
@@ -87,7 +104,6 @@ def get_weather_forecast_by_coordinates(lat,
 
     response = requests.request("GET", url, headers=HEADERS, params=querystring)
 
-    print("FORECAST WEATHER".center(80, "="))
     data = response.json()['list']
     dates = [data[i]['dt_txt'][:-3] for i in range(len(data))]
     description = [data[i]['weather'][0]['description'] for i in range(len(data))]
@@ -95,10 +111,13 @@ def get_weather_forecast_by_coordinates(lat,
     pressure = [round(data[i]['main']['pressure'] * HPASCAL_TO_PASCAL * PRESSURE_CONST, 2) for i in range(len(data))]
     humidity = [data[i]['main']['humidity'] for i in range(len(data))]
     wind_speed = [data[i]['wind']['speed'] for i in range(len(data))]
-    df = pd.DataFrame({'date': dates,
-                       'description': description,
-                       'temp,°C': temperature,
-                       'press,mm Hg': pressure,
-                       'hum,%': humidity,
-                       'wind,m/s': wind_speed})
-    print(df)
+    df = pd.DataFrame(
+        {'description': description,
+         'temp,°C': temperature,
+         'press,mm Hg': pressure,
+         'hum,%': humidity,
+         'wind,m/s': wind_speed
+         },
+        index=dates)
+    return df
+
