@@ -30,9 +30,11 @@ def get_coordinates_by_address(address: str):
         if len(response.json()) > 1:
             print("Found several places corresponding to the description. "
                   "The first one will be shown.")
-        print('Founded place: {}'.format(response.json()[0]['display_name']))
+        founded_place = response.json()[0]['display_name']
+        print('Founded place: {}'.format(founded_place))
         return {"lon": response.json()[0]['lon'],
-                "lat": response.json()[0]['lat']
+                "lat": response.json()[0]['lat'],
+                "place": founded_place
                 }
 
 
