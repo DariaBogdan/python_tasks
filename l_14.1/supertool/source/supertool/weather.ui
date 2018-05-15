@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>822</width>
-    <height>684</height>
+    <height>695</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,7 +24,7 @@
        </sizepolicy>
       </property>
       <property name="focusPolicy">
-       <enum>Qt::ClickFocus</enum>
+       <enum>Qt::NoFocus</enum>
       </property>
       <property name="contextMenuPolicy">
        <enum>Qt::NoContextMenu</enum>
@@ -58,7 +58,7 @@
               <property name="maximumSize">
                <size>
                 <width>600</width>
-                <height>80</height>
+                <height>60</height>
                </size>
               </property>
               <property name="baseSize">
@@ -66,6 +66,9 @@
                 <width>725</width>
                 <height>100</height>
                </size>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::StrongFocus</enum>
               </property>
               <property name="text">
                <string extracomment="Type address here"/>
@@ -79,7 +82,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="searchButton">
+             <widget class="QPushButton" name="weatherButton">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                 <horstretch>0</horstretch>
@@ -89,7 +92,7 @@
               <property name="maximumSize">
                <size>
                 <width>200</width>
-                <height>100</height>
+                <height>60</height>
                </size>
               </property>
               <property name="text">
@@ -117,6 +120,9 @@
           </item>
           <item row="2" column="0">
            <widget class="QTableWidget" name="tableWidgetCurrentWeather">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -140,6 +146,9 @@
               <width>739</width>
               <height>56</height>
              </size>
+            </property>
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
             </property>
             <property name="alternatingRowColors">
              <bool>false</bool>
@@ -190,6 +199,9 @@
           </item>
           <item row="3" column="0">
            <widget class="QLabel" name="labelForecastWeather">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
             <property name="baseSize">
              <size>
               <width>725</width>
@@ -206,6 +218,9 @@
           </item>
           <item row="4" column="0">
            <widget class="QTableWidget" name="tableWidgetForecastWeather">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -217,6 +232,12 @@
               <width>780</width>
               <height>181</height>
              </size>
+            </property>
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
+            <property name="dragDropOverwriteMode">
+             <bool>false</bool>
             </property>
             <property name="alternatingRowColors">
              <bool>true</bool>
@@ -475,6 +496,112 @@
        <attribute name="title">
         <string>Similar</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QLineEdit" name="lineEditSimilar">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>1</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>500</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>1000</width>
+                <height>60</height>
+               </size>
+              </property>
+              <property name="baseSize">
+               <size>
+                <width>500</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="placeholderText">
+               <string>Enter directory</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="similarButton">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>1</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>130</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>200</width>
+                <height>60</height>
+               </size>
+              </property>
+              <property name="baseSize">
+               <size>
+                <width>130</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Find similar files</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QTextBrowser" name="textBrowser">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>1</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>500</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="baseSize">
+             <size>
+              <width>500</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="readOnly">
+             <bool>false</bool>
+            </property>
+            <property name="textInteractionFlags">
+             <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextEditable|Qt::TextEditorInteraction|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+            </property>
+            <property name="openExternalLinks">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
