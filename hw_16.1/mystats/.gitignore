@@ -2,3 +2,4 @@ venv
 src/build
 source/dist
 source/stats.egg-info
+.idea
