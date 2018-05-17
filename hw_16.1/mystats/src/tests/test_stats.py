@@ -18,7 +18,3 @@ class TestMean(unittest.TestCase):
             stats.mean(['a', 'b', 'c'])
         self.assertEqual(len(err.exception.args), 1)
         self.assertEqual(err.exception.args[0], "unsupported operand type(s) for +: 'int' and 'str'")
-
-# class TestMedian(unittest.TestCase):
-#     """Assuming that given argument is numeric iterable.
-#     """
